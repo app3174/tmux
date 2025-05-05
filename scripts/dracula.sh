@@ -240,6 +240,10 @@ main() {
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-tmux-ram-usage-colors" "cyan dark_gray")
       script="#($current_dir/tmux_ram_info.sh)"
 
+    elif [ $plugin = "network-ip" ]; then
+      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-network-ip-colors" "cyan dark_gray")
+      script="#($current_dir/network-ip.sh)"
+
     elif [ $plugin = "network" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-network-colors" "cyan dark_gray")
       script="#($current_dir/network.sh)"
