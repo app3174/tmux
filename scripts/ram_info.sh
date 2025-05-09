@@ -9,11 +9,12 @@ get_ratio()
 {
   case $(uname -s) in
     Linux)
-      usage="$(free -h | awk 'NR==2 {print $3}')"
-      total="$(free -h | awk 'NR==2 {print $2}')"
-      formated="${usage}/${total}"
-      
-      echo "${formated//i/B}"
+      # usage="$(free -h | awk 'NR==2 {print $3}')"
+      # total="$(free -h | awk 'NR==2 {print $2}')"
+      # formated="${usage}/${total}"
+      #
+      # echo "${formated//i/B}"
+      echo "$(free | awk '/Mem/{printf("%.1fGB (%.f%%)"), $3/1024/1024 ,$3/$2*100}')"
       ;;
 
     Darwin)
@@ -54,7 +55,7 @@ get_ratio()
       # vmstat -s | grep "pages managed" | sed -ne 's/^ *\([0-9]*\).*$/\1/p'
       # Looked at the code from neofetch
       hw_pagesize="$(pagesize)"
-      used_mem=$(( ( 
+      used_mem=$(( (
 $(vmstat -s | grep "pages active$" | sed -ne 's/^ *\([0-9]*\).*$/\1/p') +
 $(vmstat -s | grep "pages inactive$" | sed -ne 's/^ *\([0-9]*\).*$/\1/p') +
 $(vmstat -s | grep "pages wired$" | sed -ne 's/^ *\([0-9]*\).*$/\1/p') +

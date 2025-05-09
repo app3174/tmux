@@ -9,7 +9,7 @@ get_disk_info()
 {
   case $(uname -s) in
     Linux)
-      echo "$(df -h / | tail -1 | awk '{print $3 "/" $2}')"
+      echo "$(df -h / | tail -1 | awk '{print $3 " (" $5 ")"}')"
       ;;
 
   esac
