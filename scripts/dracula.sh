@@ -209,7 +209,7 @@ main() {
       script="#($current_dir/hg.sh)"
 
     elif [ $plugin = "battery" ]; then
-      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-battery-colors" "pink dark_gray")
+      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-battery-colors" "orange dark_gray")
       script="#($current_dir/battery.sh)"
 
     elif [ $plugin = "gpu-usage" ]; then
@@ -329,7 +329,7 @@ main() {
       script="#($current_dir/network-public-ip.sh)"
 
     elif [ $plugin = "sys-temp" ]; then
-      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-sys-temp-colors" "green dark_gray")
+      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-sys-temp-colors" "cyan dark_gray")
       script="#($current_dir/sys_temp.sh)"
 
     elif [ $plugin = "cpu-arch" ]; then
